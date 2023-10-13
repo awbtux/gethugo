@@ -34,13 +34,5 @@ if ! has hugo; then
     authorize $pkgm hugo || exit 2
 fi
 
-# install git if required
-if ! has git; then
-    authorize $pkgm hugo || exit 2
-fi
-
-# clone submodules
-git submodule update --init --recursive
-
 # we're done
 exit 0
