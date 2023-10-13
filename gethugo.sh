@@ -13,9 +13,11 @@ has() {
 
 # function to run a command as root if needed
 authorize() {
+    cmd="$1"
+    shift
     case "${EUID:-${UID:-$(id -u)}}" in
-        0) eval "$@" ;;
-        *) eval "$elev \"$@\"" ;;
+        0) eval "$cmd $@" ;;
+        *) eval "$elev $cmd $@" ;;
     esac
 }
 
